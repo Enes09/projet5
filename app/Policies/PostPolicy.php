@@ -17,9 +17,9 @@ class PostPolicy
      * @param  \App\odel=Post  $odel=Post
      * @return mixed
      */
-    public function view(User $user, Post $post)
+    public function view(User $user)
         {
-            return $user->isAdmin();
+            return $user->isSuperAdmin();
         }
 
     /**

@@ -29,11 +29,15 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function isAdmin ()
+    public function isSuperAdmin ()
         {
-            if ($this->admin === 1)
+            if ($this->super_admin === 1)
                 {
                     return true; 
+                }
+            else 
+                {
+                    return false;
                 }
         }
 }
