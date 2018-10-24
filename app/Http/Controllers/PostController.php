@@ -6,6 +6,8 @@ use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\PostRequest;
+use App\Http\Controllers\DB;
 
 
 class PostController extends Controller
@@ -35,9 +37,11 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Post $post)
     {
-        //
+        $this->authorize('store', $post);
+
+        return view('createPost');
     }
 
     /**
@@ -46,9 +50,21 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request, Post $post)
     {
-        //
+        $this->authorize('store', $post);
+
+        $values= [
+           'title' => $request->title,
+           'content' => $request->content
+        ];
+
+        $post->create($values);
+
+        $request->session()->flash('status', 'Le billet a été posté.');
+
+
+        return redirect('post');
     }
 
     /**

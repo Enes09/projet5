@@ -17,9 +17,18 @@ class PostPolicy
      * @param  \App\odel=Post  $odel=Post
      * @return mixed
      */
+
+    public function before (User $user, $ability)
+        {
+            if($user->isSuperAdmin())
+                {
+                    return true;
+                }
+        }
+
     public function view(User $user)
         {
-            return $user->isSuperAdmin();
+            return ture;
         }
 
     /**
@@ -28,21 +37,16 @@ class PostPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function create(User $user)
-    {
-        /*
-        return 
+    public function create(User $user, Post $post)
+        {
+            return $user->isSuperAdmin();    
+        }
 
-            if($user->isAdmin() || $user->isSuperAdmin())
-                {
-                    return true;
-                }
-            else
-                {
-                    return false;
-                }
-               */ 
-    }
+    public function store(User $user)
+        {
+            return $user->isSuperAdmin();       
+        }
+
 
     /**
      * Determine whether the user can update the odel=Post.
@@ -51,9 +55,10 @@ class PostPolicy
      * @param  \App\odel=Post  $odel=Post
      * @return mixed
      */
+
     public function update(User $user,  Post $post)
     {
-        //
+        return $user->isAdmin();       
     }
 
     /**
@@ -65,6 +70,6 @@ class PostPolicy
      */
     public function delete(User $user,  Post $post)
     {
-        //
+        return $user->isSuperAdmin(); 
     }
 }

@@ -45,3 +45,24 @@ a:hover{
 	text-decoration: none !important;;
 }
 
+/*  here begin the createPost view  */
+
+form{
+	border: solid #ededed 1px;
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px #ededed;
+	margin-top: 10px;
+}
+
+.submit{
+	text-align: right;
+}
+
+.bouton{
+	margin-bottom: 10px;
+}
+
+.formTitle{
+	font-weight: bold;
+	margin-top: 10px;
+}

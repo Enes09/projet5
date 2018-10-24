@@ -28,7 +28,7 @@ Billet
 			
 
 			<p class="center title"><strong> Titre : {{ $post->title }}</strong></p>
-			<p class="center content"> {{ $post->content }} </p>
+			<p class="center content"> {!!  strip_tags($post->content, '<strong><em><p>') !!} </p>
 
 				<div class="row"> 
 					<span class="date col-lg-6">

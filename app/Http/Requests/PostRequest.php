@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
+
 
 class PostRequest extends FormRequest
 {
@@ -13,7 +15,7 @@ class PostRequest extends FormRequest
      */
     public function authorize()
     {
-        return Auth::chek();
+        return true;
     }
 
     /**
@@ -24,7 +26,10 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+
+            'title' => 'required|max:255',
+            'content' => 'required|max:1000',
+
         ];
     }
 }

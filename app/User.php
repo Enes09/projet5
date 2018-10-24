@@ -40,4 +40,21 @@ class User extends Authenticatable
                     return false;
                 }
         }
+
+    public function isAdmin ()
+        {
+            if ($this->admin === 1)
+                {
+                    return true; 
+                }
+            else 
+                {
+                    return false;
+                } 
+        }
+
+    public function getId()
+        {
+          return $this->id;
+        }
 }
