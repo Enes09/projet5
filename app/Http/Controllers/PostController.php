@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -21,7 +22,12 @@ class PostController extends Controller
             $this->authorize('view', $post);
             $postData = $post->view();
 
-            return view('readPost')->with('postData', $postData);
+            return view('readPost', [ 
+
+                'postData' => $postData,
+                
+
+             ]);//->with('postData', $postData);
         }
 
     /**
