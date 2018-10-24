@@ -1,0 +1,47 @@
+.post{
+
+	border: solid #ededed 1px;
+	border-radius: 10px;
+	margin: 10px 0px 10px 0px;
+}
+
+.post>p.center{
+	text-align: center; 
+}
+
+.post>div{
+	margin-bottom: 10px;
+}
+
+.post>div>span.link{
+	text-align: right; 
+}
+
+.post>div>span.date{
+	text-align: left; 
+}
+
+.post>div>span>a{
+	margin-left:5px;
+	border-radius: 5px;
+	font-size: 1em;
+	padding: 5px;
+	color:white;
+}
+
+a.comments{
+	background: #ff9659 !important;
+}
+
+.update{
+	background: #1e69ff;
+}
+
+.delete{
+	background: #ff1e1e;
+}
+
+a:hover{
+	text-decoration: none !important;;
+}
+
