@@ -39,6 +39,15 @@ a.comments{
 
 .delete{
 	background: #ff1e1e;
+	color: white;
+	height: 30px;
+    margin-bottom: 5px;
+    line-height: 0.5em !important;
+    margin-left: 5px;
+    border-radius: 5px;
+    font-size: 1em;
+    padding: 5px;
+    
 }
 
 a:hover{
@@ -54,6 +63,11 @@ form{
 	margin-top: 10px;
 }
 
+form#deleteForm{
+	display: inline;
+	font-size: 1em;
+}
+
 .submit{
 	text-align: right;
 }
@@ -65,4 +79,8 @@ form{
 .formTitle{
 	font-weight: bold;
 	margin-top: 10px;
+}
+
+.alert{
+	margin-top: 5px;
 }

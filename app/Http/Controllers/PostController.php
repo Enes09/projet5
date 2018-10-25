@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Requests\PostRequest;
 use App\Http\Controllers\DB;
+use Auth;
+use Illuminate\Support\Facades\Redirect;
+
 
 
 class PostController extends Controller
@@ -20,16 +23,13 @@ class PostController extends Controller
 
     public function index(Post $post)
         {
-
             $this->authorize('view', $post);
-            $postData = $post->view();
+           
+            $postData = $post->paginate(2);
 
-            return view('readPost', [ 
-
+            return view('readPostView', [ 
                 'postData' => $postData,
-                
-
-             ]);//->with('postData', $postData);
+             ]);
         }
 
     /**
@@ -41,7 +41,7 @@ class PostController extends Controller
     {
         $this->authorize('store', $post);
 
-        return view('createPost');
+        return view('createPostView');
     }
 
     /**
@@ -54,15 +54,15 @@ class PostController extends Controller
     {
         $this->authorize('store', $post);
 
-        $values= [
-           'title' => $request->title,
-           'content' => $request->content
-        ];
+        $post = new Post;
 
-        $post->create($values);
+        $post->user_id = Auth::user()->id;
+        $post->title = $request->title;
+        $post->content = $request->content;
+
+        $post->save();
 
         $request->session()->flash('status', 'Le billet a été posté.');
-
 
         return redirect('post');
     }
@@ -86,7 +86,11 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this->authorize('update', Post::class);
+
+        $post = Post::FindOrFail($id);
+
+        return view('editPostView', ['post' => $post]);
     }
 
     /**
@@ -96,9 +100,19 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
-        //
+        $this->authorize('update', Post::class);
+
+        Post::where('id', $id)->update([
+
+            'title'=>$request->title,
+            'content'=>$request->content,
+        ]);
+
+        $request->session()->flash('status', 'Le billet a été modifié.');
+
+        return redirect('post');
     }
 
     /**
@@ -109,6 +123,12 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->authorize('delete', Post::class);
+
+        $post = Post::find($id);
+
+        $post->delete();
+
+        return Redirect::back();
     }
 }

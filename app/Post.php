@@ -14,34 +14,11 @@ class Post extends Model
 
 	protected $fillable = ['user_id', 'title', 'content', 'created_at', 'updated_at'];
 
-    public function view()
-	    {
-	        $postData = DB::table('posts')->paginate(2);
-	        return $postData;
-	    }
 
-	public function create($values)
+	public function edit($id)
 		{
-			
-			DB::table('posts')->insert([
-
-				'user_id' => Auth::user()->id,
-				'title' => $values['title'],
-				'content' => $values['content'],
-				'created_at' => \Carbon\Carbon::now(),
-				'updated_at' => \Carbon\Carbon::now(),
-			
-			]);
-
+			$postData = DB::table('posts')->where('id', $id);
+			return $postData;
 		}
 
-	public function edit( $id)
-		{
-
-		}
-
-	public function delete()
-		{
-
-		}
 }

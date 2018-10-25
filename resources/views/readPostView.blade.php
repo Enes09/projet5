@@ -8,7 +8,9 @@ Billet
 @section('content')
 
 
+<div class="offset-lg-1">
 {{$postData->render("pagination::bootstrap-4")}}
+</div>
 
 	@foreach($postData as $post)
 
@@ -48,12 +50,19 @@ Billet
 
 						<a class="comments" href="">Commentaires</a>
 
-						@can('view', App\Post::class)
-							<a class="update" href="">Modifier</a>
+						@can('update', App\Post::class)
+							<a class="update" href="{{ route('post.edit', $post->id) }}">Modifier</a>
 						@endcan
 
-						@can('view', App\Post::class)
-							<a class="delete" href="">Supprimer</a>
+						@can('delete', App\Post::class)
+
+								{{ Form::open(['action'=>['PostController@destroy', $post->id],'id'=>'deleteForm' ,'method'=>'post']) }}
+
+									{{ method_field('DELETE') }}
+									{{ Form::submit('Supprimer', ['class'=>'delete btn button']) }}
+									
+								{{ Form::close() }}
+
 						@endcan
 
 					</span>
@@ -64,7 +73,8 @@ Billet
 
 	@endforeach
 
+<div class="offset-lg-1">
 {{$postData->render("pagination::bootstrap-4")}}
-
+</div>
 
 @endsection

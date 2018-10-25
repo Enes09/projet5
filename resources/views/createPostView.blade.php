@@ -13,11 +13,13 @@
 	<div class="form-group">
 		{{ Form::label('title :', null, ['class' => 'formTitle']) }}
 		{{ Form::text('title', null, ['class' => 'form-control']) }}
+		{!! $errors->first('title', '<div class="alert alert-warning"> :message </div>') !!}
 	</div>
 
 	<div class="form-group">
 		{{ Form::label('content :', null, ['class' => 'formTitle'])  }}
 		{{ Form::textarea('content', null, ['class' => 'form-control']) }}
+		{!! $errors->first('title', '<div class="alert alert-warning"> :message </div>') !!}
 	</div>
 
 	<div class="submit">
