@@ -7,27 +7,20 @@ Billet
 
 @section('content')
 
-
 <div class="offset-lg-1">
 {{$postData->render("pagination::bootstrap-4")}}
 </div>
 
-	@foreach($postData as $post)
+
+@foreach($postData as $post)
 
 		<div class="post offset-lg-1 col-lg-10 offset-lg-1" >
 
-			<p>
-
-			Publié par : 
-
-				@if( Auth::user()->id === $post->user_id )
-					vous
-				@else
-					{{ Auth::user()->name }}
-				@endif
-
-			</p>
-			
+		@foreach($users as $user)
+			@if( $post->user_id === $user->id )
+					<p>Publié par : {{ $user->pseudo }} </p>
+			@endif
+		@endforeach
 
 			<p class="center title"><strong> Titre : {{ $post->title }}</strong></p>
 			<p class="center content"> {!!  strip_tags($post->content, '<strong><em><p>') !!} </p>
@@ -48,7 +41,7 @@ Billet
 					
 					<span class="link col-lg-6">
 
-						<a class="comments" href="">Commentaires</a>
+						<a class="comments" href=" {{ action('CommentController@index', $post->id) }} ">Commentaires</a>
 
 						@can('update', App\Post::class)
 							<a class="update" href="{{ route('post.edit', $post->id) }}">Modifier</a>
@@ -72,6 +65,7 @@ Billet
 		</div>
 
 	@endforeach
+
 
 <div class="offset-lg-1">
 {{$postData->render("pagination::bootstrap-4")}}

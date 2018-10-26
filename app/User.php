@@ -53,8 +53,12 @@ class User extends Authenticatable
                 } 
         }
 
-    public function getId()
+
+    public function isOwner($id)
         {
-          return $this->id;
+            if($this->id === $id || $this->admin === 1 || $this->super_admin === 1)
+                {
+                    return true;
+                }
         }
 }

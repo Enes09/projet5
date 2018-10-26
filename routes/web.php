@@ -16,7 +16,13 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/post', 'PostController');
+Route::resource('post', 'PostController');
+
+Route::get('comment/{post_id}', ['as' => 'comment.index', 'uses' => 'CommentController@index'])->where('post_id','^[1-9]\d*$');
+
+Route::resource('comment', 'CommentController', ['except'=>['index']] );
+
+
+//['except' => ['index']

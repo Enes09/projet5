@@ -4,7 +4,15 @@
 	Nouveau billet
 @endsection
 
+<script>
 
+	tinymce.init({
+        selector : "textarea",
+        plugins : ["advlist autolink lists link image charmap print preview anchor", "searchreplace visualblocks code fullscreen"],
+        toolbar : "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent",
+    });
+
+</script>
 
 @section('content')
 
@@ -19,7 +27,7 @@
 	<div class="form-group">
 		{{ Form::label('content :', null, ['class' => 'formTitle'])  }}
 		{{ Form::textarea('content', null, ['class' => 'form-control']) }}
-		{!! $errors->first('title', '<div class="alert alert-warning"> :message </div>') !!}
+		{!! $errors->first('content', '<div class="alert alert-warning"> :message </div>') !!}
 	</div>
 
 	<div class="submit">

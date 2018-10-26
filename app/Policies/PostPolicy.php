@@ -28,7 +28,7 @@ class PostPolicy
 
     public function view(User $user)
         {
-            return ture;
+            return true;
         }
 
     /**

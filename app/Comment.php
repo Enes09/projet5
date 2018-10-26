@@ -9,9 +9,13 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Requests\PostRequest;
 use Auth;
 
-class Post extends Model
+class Comment extends Model
 {
+    protected $fillable = ['user_id','post_id', 'title', 'content', 'created_at', 'updated_at'];
 
-	protected $fillable = ['user_id', 'title', 'content', 'created_at', 'updated_at'];
-
+    public function create ()
+    	{
+    		
+    	}
 }
+ 

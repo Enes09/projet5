@@ -84,3 +84,26 @@ form#deleteForm{
 .alert{
 	margin-top: 5px;
 }
+
+.comment{
+	border: solid #ededed 1px;
+	border-radius: 10px;
+	margin: 10px 0px 10px 0px;
+}
+
+.commentTitle{
+	text-align: center;
+}
+
+.textareaComment{
+	height: 100px;
+}
+
+form.commentForm>input,form.commentForm>label {
+	padding-left: 10px; 
+}
+
+form.commentForm>input, form.commentForm>textarea{
+	border-radius: 10px;
+	border: solid 1px #ededed;
+}

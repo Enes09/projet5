@@ -23,12 +23,15 @@ class PostController extends Controller
 
     public function index(Post $post)
         {
-            $this->authorize('view', $post);
+            
            
-            $postData = $post->paginate(2);
+            $postData = $post->orderBy('created_at', 'desc')->paginate(2);
+
+            $users = User::get();
 
             return view('readPostView', [ 
                 'postData' => $postData,
+                'users' => $users,
              ]);
         }
 
