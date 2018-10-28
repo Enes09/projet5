@@ -34,11 +34,11 @@ commentaire du billet
 					
 					<span class="link col-lg-6">
 
-						@can('update', App\Post::class)
+						@can('update', $post)
 							<a class="update" href="{{ route('post.edit', $post->id) }}">Modifier</a>
 						@endcan
 
-						@can('delete', App\Post::class)
+						@can('delete', $post)
 
 								{{ Form::open(['action'=>['PostController@destroy', $post->id],'id'=>'deleteForm' ,'method'=>'post']) }}
 
@@ -84,19 +84,23 @@ commentaire du billet
 		<p class="commentTitle" > {{ $comment->title }} </p>
 		<p> {{ $comment->content }} </p>
 
-		<span>
-			{{ \Carbon\Carbon::parse($comment->created_at)->format('d/m/y')}}
+		<span class="commentDate">
+			{{ \Carbon\Carbon::parse($comment->created_at)->format('d/m/y à H:i:s')}}
 		</span>
 
-		<span>
+		<span class="links offset-lg-5 col-lg-6">
 			
-			<a class="commentLike btn" href="">J'aime</a>
-			<a class="commentDislike btn" href="">J'aime pas</a>
-			<a class="commentAlert btn" href="">Alerter</a>
-			<a class="commentAllow btn" href="">Valider</a>
+			<a class="commentLike btn" href=" {{ route('comment.like', $comment->id) }} "><i class="far fa-thumbs-up"></i></a>
+			<a class="commentDislike btn" href=" {{ route('comment.dislike', $comment->id) }} "><i class="far fa-thumbs-down"></i></a>
+
+			<a class="commentAlert btn" href=" {{ route('comment.alert', $comment->id) }}  ">Alerter <i class="fas fa-exclamation-circle"></i></a>
+
+			<a class="commentAllow btn" href=" {{ route('comment.allow', $comment->id) }} ">Valider <i class="fas fa-check-circle"></i></a>
 
 			{{ Form::open(['action'=>['CommentController@destroy', $comment->id], 'id'=>'deleteComment', 'method'=>'post']) }}
-				{{ Form::submit('Supprimer', ['class'=>'btn']) }}
+				 {{ method_field('delete') }}
+				 {{ Form::hidden('id', $comment->id) }}
+				{{ Form::button('<i class="far fa-trash-alt"></i>', ['class' => 'btn btn-sm deleteComment', 'type' => 'submit']) }}
 			{{ Form::close() }}
 
 		</span>

@@ -18,6 +18,14 @@ class CommentPolicy
      * @return mixed
      */
 
+   public function before (User $user, $ability)
+        {
+            if($user->isSuperAdmin())
+                {
+                    return true;
+                }
+        }
+
     public function view(User $user, Comment $comment)
     { 
         return true;
@@ -31,12 +39,12 @@ class CommentPolicy
      */
     public function create( User $user, Comment $comment)
         {
-            return true;
+            return $user->isUser();
         }
 
     public function store(User $user)
         {
-            return true;
+            return $user->isUser();
         }
 
     /**
@@ -48,7 +56,7 @@ class CommentPolicy
      */
     public function update(User $user, Comment $comment)
     {
-        return false;
+        return $user->isAdmin();
     }
     /**
      * Determine whether the user can delete the comment.
@@ -59,6 +67,28 @@ class CommentPolicy
      */
     public function delete(User $user, Comment $comment)
     {
-        //return $user->isOwner($comment->user_id); 
+        return $user->isOwner($comment->user_id);
+        
     }
+
+    public function alert(User $user, Comment $comment)
+        {
+           return $user->canAlert($comment->id);
+        }
+
+    public function like()
+        {
+            return $user->isUser();
+
+        }
+
+    public function dislike()
+        {
+            return $user->isUser();
+        }
+
+    public function allow()
+        {
+            return $user->isAdmin();
+        }
 }

@@ -107,3 +107,39 @@ form.commentForm>input, form.commentForm>textarea{
 	border-radius: 10px;
 	border: solid 1px #ededed;
 }
+
+.deleteComment{
+	background: red;
+}
+
+.far.fa-trash-alt{
+	color:white;
+}
+
+.fas.fa-check-circle{
+	color:#6fff59;
+}
+
+.fas.fa-exclamation-circle{
+	color:red;
+}
+
+.far.fa-thumbs-down{
+	color:orange;
+}
+
+.far.fa-thumbs-up{
+	color:blue;
+}
+.links{
+	text-align: right;
+}
+
+form#deleteComment{
+	width: 30px;
+	display:inline;
+}
+
+.commentDate{
+	font-size: 0.8em;
+}

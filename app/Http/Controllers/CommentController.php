@@ -8,6 +8,7 @@ use App\Post;
 use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Http\Requests\CommentRequest;
+use App\Http\Requests\DeleteRequest;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
 
@@ -105,24 +106,51 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(DeleteRequest $request, Comment $comment)
     {
-        //
+
+        $this->authorize('delete', $comment);
+
+        $comment->find($request->id);
+
+        $comment->delete();
+
+        return Redirect::back();
     }
 
-    public function allow($id)
+
+    public function alert($id, Comment $comment)
         {
 
+            $this->authorize('alert', $comment);
+
+            DB::table('alerted_comment')->insert(['user_id' => Auth::user()->id, 'comment_id' => $id]);
+
+            return Redirect::back();
+            
+        }
+
+    public function allow($id, Comment $comment)
+        {
+            $this->authorize('update', $comment);
+
+            $comment->where('id', $id)->update(['allowed'=>true]);
+
+            return Redirect::back();
         }
 
     public function like($id)
         {
+            DB::table('liked_comment')->insert(['user_id'=>Auth::user()->id, 'comment_id'=>$id]);
 
+            return Redirect::back();
         }
 
-    public function diLike($id)
+    public function dilike($id)
         {
+            DB::table('disliked_comment')->insert(['user_id'=>Auth::user()->id, 'comment_id'=>$id]);
 
+            return Redirect::back();
         }
 
 }

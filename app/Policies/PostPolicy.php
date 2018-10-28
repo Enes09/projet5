@@ -57,9 +57,9 @@ class PostPolicy
      */
 
     public function update(User $user,  Post $post)
-    {
-        return $user->isSuperAdmin();       
-    }
+        {
+            return $user->isSuperAdmin();       
+        }
 
     /**
      * Determine whether the user can delete the odel=Post.

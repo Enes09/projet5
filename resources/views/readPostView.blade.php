@@ -43,11 +43,11 @@ Billet
 
 						<a class="comments" href=" {{ action('CommentController@index', $post->id) }} ">Commentaires</a>
 
-						@can('update', App\Post::class)
+						@can('update', $post)
 							<a class="update" href="{{ route('post.edit', $post->id) }}">Modifier</a>
 						@endcan
 
-						@can('delete', App\Post::class)
+						@can('delete', $post)
 
 								{{ Form::open(['action'=>['PostController@destroy', $post->id],'id'=>'deleteForm' ,'method'=>'post']) }}
 
