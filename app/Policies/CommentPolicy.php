@@ -37,7 +37,7 @@ class CommentPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function create( User $user, Comment $comment)
+    public function create( User $user)
         {
             return $user->isUser();
         }
@@ -54,7 +54,7 @@ class CommentPolicy
      * @param  \App\Comment  $comment
      * @return mixed
      */
-    public function update(User $user, Comment $comment)
+    public function update(User $user)
     {
         return $user->isAdmin();
     }
@@ -73,22 +73,19 @@ class CommentPolicy
 
     public function alert(User $user, Comment $comment)
         {
-           return $user->canAlert($comment->id);
+          
+            return !$comment->alertedByUsers()->find($user->id);
         }
 
-    public function like()
+    public function like(User $user, Comment $comment)
         {
-            return $user->isUser();
+            return !$comment->likedByUsers()->find($user->id);
 
         }
 
-    public function dislike()
+    public function dislike(User $user, Comment $comment)
         {
-            return $user->isUser();
+            return $comment->likedByUsers()->find($user->id);
         }
 
-    public function allow()
-        {
-            return $user->isAdmin();
-        }
 }

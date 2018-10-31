@@ -6,6 +6,12 @@ commentaire du billet
 
 @section('content')
 
+
+@if(Session::has('status'))
+<p class="status" > {{ Session::get('status') }} </p>
+@endif
+
+
 <div class="post offset-lg-1 col-lg-10 offset-lg-1" >
 
 			@foreach($users as $user)
@@ -90,12 +96,25 @@ commentaire du billet
 
 		<span class="links offset-lg-5 col-lg-6">
 			
+			
 			<a class="commentLike btn" href=" {{ route('comment.like', $comment->id) }} "><i class="far fa-thumbs-up"></i></a>
+			
+
+			
 			<a class="commentDislike btn" href=" {{ route('comment.dislike', $comment->id) }} "><i class="far fa-thumbs-down"></i></a>
+			
 
+			
 			<a class="commentAlert btn" href=" {{ route('comment.alert', $comment->id) }}  ">Alerter <i class="fas fa-exclamation-circle"></i></a>
+			
 
+			@if($comment->allowed === 0)
 			<a class="commentAllow btn" href=" {{ route('comment.allow', $comment->id) }} ">Valider <i class="fas fa-check-circle"></i></a>
+			@else
+			<p>Ce message  été validé.</p>
+			@endif
+
+
 
 			{{ Form::open(['action'=>['CommentController@destroy', $comment->id], 'id'=>'deleteComment', 'method'=>'post']) }}
 				 {{ method_field('delete') }}

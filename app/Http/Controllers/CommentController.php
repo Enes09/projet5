@@ -11,6 +11,8 @@ use App\Http\Requests\CommentRequest;
 use App\Http\Requests\DeleteRequest;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
+use Illuminate\Support\Facades\Session;
+
 
 class CommentController extends Controller
 {
@@ -106,10 +108,65 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
+    public function allow(Comment $comment)
+        {
+            $this->authorize('update', $comment);
+
+            $comment->where('id', $comment->id)->update(['allowed'=>true]);
+
+            Session::flash('status', 'Le commentaire a été valider.');
+
+            return Redirect::back();
+        }
+
+
+    public function like(Comment $comment)
+        {
+            $this->authorize('like', $comment);
+
+            $comment->likedByUsers()->save(Auth::user());
+
+            Session::flash('status', 'Le commentaire a été aimé.');
+
+            return Redirect::back();
+        }
+
+
+    public function alert(Comment $comment)
+        {
+
+            $this->authorize('alert', $comment);
+
+            $comment->alertedByUsers()->save(Auth::user());
+
+            Session::flash('status', 'Le commentaire a été signaler.');
+
+            return Redirect::back();
+            
+        }
+
+
+    public function dislike(Comment $comment)
+        {
+            $this->authorize('dislike', $comment);
+
+            $comment->likedByUsers()->detach(Auth::user());
+
+            Session::flash('status', 'Vous n\'aimé plus ce message.');
+
+            return Redirect::back();
+        }
+
+
     public function destroy(DeleteRequest $request, Comment $comment)
     {
 
         $this->authorize('delete', $comment);
+
+        $comment->likedByUsers()->detach();        
+        $comment->alertedByUsers()->detach();
 
         $comment->find($request->id);
 
@@ -119,38 +176,12 @@ class CommentController extends Controller
     }
 
 
-    public function alert($id, Comment $comment)
-        {
+    
 
-            $this->authorize('alert', $comment);
+    
 
-            DB::table('alerted_comment')->insert(['user_id' => Auth::user()->id, 'comment_id' => $id]);
+    
 
-            return Redirect::back();
-            
-        }
-
-    public function allow($id, Comment $comment)
-        {
-            $this->authorize('update', $comment);
-
-            $comment->where('id', $id)->update(['allowed'=>true]);
-
-            return Redirect::back();
-        }
-
-    public function like($id)
-        {
-            DB::table('liked_comment')->insert(['user_id'=>Auth::user()->id, 'comment_id'=>$id]);
-
-            return Redirect::back();
-        }
-
-    public function dilike($id)
-        {
-            DB::table('disliked_comment')->insert(['user_id'=>Auth::user()->id, 'comment_id'=>$id]);
-
-            return Redirect::back();
-        }
+    
 
 }

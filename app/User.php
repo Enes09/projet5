@@ -94,4 +94,9 @@ class User extends Authenticatable
                     return true;
                 }
         }
+
+        public function alertedComments()
+            {
+                return $this->belongsToMany(Comment::class, 'alerted_comment', 'user_id');
+            }
 }

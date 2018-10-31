@@ -1,3 +1,3 @@
 
 
-<p> wsh </p>
+<p> {{ $results }} </p>

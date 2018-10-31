@@ -18,9 +18,15 @@ class Comment extends Model
     		
     	}
 
-    public function alert()
+    public function alertedByUsers ()
     	{
-    		
+    		return $this->belongsToMany(User::class, 'alerted_comment', 'comment_id');
+    	}
+
+
+    public function likedByUsers ()
+    	{
+    		return $this->belongsToMany(User::class, 'liked_comments', 'comment_id');
     	}
 
 }
