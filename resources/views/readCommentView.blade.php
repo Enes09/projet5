@@ -7,11 +7,6 @@ commentaire du billet
 @section('content')
 
 
-@if(Session::has('status'))
-<p class="status" > {{ Session::get('status') }} </p>
-@endif
-
-
 <div class="post offset-lg-1 col-lg-10 offset-lg-1" >
 
 			@foreach($users as $user)
@@ -73,13 +68,22 @@ commentaire du billet
 
 	{{ Form::close() }}
 
+
+<h3> Commentaires : </h3>
+
+
+
 <div class="offset-lg-1">
 {{$comments->render("pagination::bootstrap-4")}}
 </div>
 
+@if($comments->isEmpty())
+ <p class="emptyCommentsMessage offset-lg-1 col-lg-4" > Il ny'a pas encore de commentaires pour ce billet. </p>
+@endif
+
 	@foreach($comments as $comment)
 
-	<div class="comment col-lg-8">
+	<div class="comment offset-lg-1 col-lg-8">
 
 		@foreach($users as $user)
 			@if($user->id === $comment->user_id)
@@ -87,42 +91,49 @@ commentaire du billet
 			@endif
 		@endforeach
 
-		<p class="commentTitle" > {{ $comment->title }} </p>
 		<p> {{ $comment->content }} </p>
 
 		<span class="commentDate">
 			{{ \Carbon\Carbon::parse($comment->created_at)->format('d/m/y à H:i:s')}}
 		</span>
 
-		<span class="links offset-lg-5 col-lg-6">
+		<p class="links">
 			
-			
-			<a class="commentLike btn" href=" {{ route('comment.like', $comment->id) }} "><i class="far fa-thumbs-up"></i></a>
-			
+			<span>
+			@can('like', $comment)
+			<a class="commentLike btn" href=" {{ route('comment.like', $comment->id) }} "><i class="far fa-thumbs-up"></i>  </a>
+			@endcan
+			like : {{ $comment->likedByUsers()->where('comment_id', $comment->id)->count() }}
+			</span>
 
-			
+			@can('dislike', $comment)
 			<a class="commentDislike btn" href=" {{ route('comment.dislike', $comment->id) }} "><i class="far fa-thumbs-down"></i></a>
-			
+			@endcan
 
-			
+
+			@can('alert', $comment)
 			<a class="commentAlert btn" href=" {{ route('comment.alert', $comment->id) }}  ">Alerter <i class="fas fa-exclamation-circle"></i></a>
-			
+			@endcan
+
 
 			@if($comment->allowed === 0)
-			<a class="commentAllow btn" href=" {{ route('comment.allow', $comment->id) }} ">Valider <i class="fas fa-check-circle"></i></a>
+				@can('update', $comment)
+				<a class="commentAllow btn" href=" {{ route('comment.allow', $comment->id) }} ">Valider <i class="fas fa-check-circle"></i></a>
+				@endcan
 			@else
-			<p>Ce message  été validé.</p>
+			<span>Ce message  été validé.</span>
 			@endif
 
 
-
+			@can('delete', $comment)
 			{{ Form::open(['action'=>['CommentController@destroy', $comment->id], 'id'=>'deleteComment', 'method'=>'post']) }}
 				 {{ method_field('delete') }}
 				 {{ Form::hidden('id', $comment->id) }}
 				{{ Form::button('<i class="far fa-trash-alt"></i>', ['class' => 'btn btn-sm deleteComment', 'type' => 'submit']) }}
 			{{ Form::close() }}
+			@endcan
 
-		</span>
+		</p>
 	</div>
 
 

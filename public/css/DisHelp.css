@@ -133,13 +133,213 @@ form.commentForm>input, form.commentForm>textarea{
 }
 .links{
 	text-align: right;
+	position: relative;
 }
 
 form#deleteComment{
 	width: 30px;
 	display:inline;
+	position: absolute;
+	top: 0px;
+	right: 10px;
 }
 
 .commentDate{
 	font-size: 0.8em;
+}
+
+.pagination{
+	margin-top: 20px;
+}
+
+h3{
+	color: #b7b7b7 !important;
+	margin-top: 20px !important;
+	margin-bottom: 20px !important;
+	margin-left: 10px;
+}
+
+.emptyCommentsMessage{
+	border-radius: 10px;
+	border:solid 1px #ededed;
+	box-shadow: 3px 3px 3px #ededed;
+}
+
+.status{
+	position: fixed;
+    right: 20px;
+    bottom: 10px;
+    border-radius: 5px;
+    background: #5b5b5b;
+    color: #ffb24f;
+    text-align: center;
+    width: 230px;
+}
+
+.status > button{
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+
+}
+
+/*  page liste des users */
+
+.userLabel{
+	border:solid 1px #ededed;
+	box-shadow: 2px 2px 2px #ededed;
+	margin:5px;
+}
+
+td{
+	padding-left: 10px;
+	height: 50px;
+}
+
+tr{
+	border:solid 1px #ededed;
+}
+
+form#deleteUser>input{
+	background: #ff1e1e;
+	border: none; 
+	color:white;
+}
+
+form#deleteUser{
+	display: inline;
+}
+
+td.userLinks{
+	text-align: center;
+}
+
+.contact{
+	background: #ff9659 !important;
+	color: white;
+}
+
+.show{
+	background: #4a799e !important;
+	color: white;
+}
+
+a.show:hover, a.contact:hover{
+	color: white;
+}
+
+td.tableTitle{
+	font-weight: bold !important;
+}
+
+.profilData{
+	border-radius: 10px;
+	border:solid 1px #ededed;
+	box-shadow: 2px 2px 2px #ededed;
+	position: relative;	
+	margin-top: 20px;
+}
+
+.userGrade{
+	position: absolute;
+	border-radius: 5px;
+	font-size: .8em;
+	top: 10px;
+	right: 20px;
+	background: linear-gradient(#4d929e, #d6f8ff);
+	color:white;
+}
+
+.profilData>a{
+	position: absolute;
+	bottom: 10px;
+	right: 20px;
+	background: #ff9659 !important;
+	color: white;
+}
+.profilData>a:hover{
+	color:white;
+}
+
+form.contactUserForm>div>input{
+	border-radius: 5px;
+	border:#ededed 1px solid;
+	box-shadow: 2px 2px 2px #ededed;
+	margin-top:10px;
+}
+
+form.contactUserForm{
+	position: relative;
+}
+
+.submitContactForm{
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+
+form.contactUserForm>div>textarea{
+	margin-bottom: 40px;
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px #ededed;
+
+}
+
+.reciever{
+	color: #ffcf77 !important;
+	margin-top: 20px !important;
+	margin-bottom: 20px !important;
+	margin-left: 10px;
+}
+
+footer{
+	height: 200px;
+	position: relative;
+	border-top: solid 2px #ededed;
+	border-radius: 20px;
+}
+
+footer>a{
+	position: absolute;
+	bottom: 10%;
+	right: 5%;
+	background: #727272;
+	color: white;
+}
+
+header{
+	position: relative;
+	height: 150px;
+	border-bottom: solid 2px #ededed;
+	border-radius: 20px;
+}
+
+
+form.contactSiteForm{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	position: relative;
+}
+
+form.contactSiteForm>div>input, form.contactSiteForm>div>textarea{
+
+	margin-top: 15px;
+	margin-bottom: 15px;
+	border-radius: 10px;
+	box-shadow: 5px 5px 5px #ededed;
+	border: solid 1px #ededed;
+
+}
+
+form.contactSiteForm>div>textarea{
+	margin-bottom: 50px;
+}
+
+.contactSiteSubmit{
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
 }

@@ -13,8 +13,23 @@
 </head>
 
 <body>
+	<header>
+		
+		
+	</header>
+
+	@if(Session::has('status'))
+			<p class="status" > {{ Session::get('status') }} &nbsp; <button class="deleteStatus"> <i class="fas fa-times"></i> </button> </p>
+		@endif
 
 	@yield('content')
+
+
+<footer>
+	
+	<a class="btn button" href=" {{ url('contactSite') }} ">Formulaire de Contact</a>
+
+</footer>
 
 </body>
 </html>

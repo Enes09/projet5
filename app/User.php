@@ -99,4 +99,20 @@ class User extends Authenticatable
             {
                 return $this->belongsToMany(Comment::class, 'alerted_comment', 'user_id');
             }
+
+        public function canUpdateProfil($id)
+            {
+                if($id === $this->id)
+                    {
+                        return true;
+                    }
+            }
+
+        public function isAdminOrSuperAdmin()
+            {
+                if($this->admin === 1 || $this->superAdmin === 1)
+                    {
+                        return true;
+                    }
+            }
 }

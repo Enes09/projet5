@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -32,5 +33,12 @@ Route::get('comment/{post_id}', ['as' => 'comment.index', 'uses' => 'CommentCont
 
 Route::resource('comment', 'CommentController', ['except'=>['index']] );
 
+Route::resource('user', 'UserController');
 
-//['except' => ['index']
+Route::get('contact/{id}', ['as'=>'user.contact','uses'=> 'UserController@contact']);
+
+Route::post('contactUser', 'ContactController@contactUser');
+
+Route::get('contactSite', 'ContactController@contactSite');
+
+Route::post('ContactSite', 'COntactController@ContactSiteSend');
