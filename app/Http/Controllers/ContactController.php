@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Contact;
 use App\Http\Requests\ContactRequest;
+use Illuminate\Support\Facades\Session;
 
 class ContactController extends Controller
 {
@@ -14,12 +15,14 @@ class ContactController extends Controller
 
     public function create()
     {
-        return view('contactUserModel');
+        return view('contactModel');
     }
 
     public function contactUser (ContactRequest $request)
     {
-        Mail::to($request->mail)
+    	$this->authorize('create');
+
+        Mail::to($request->email)
             ->send(new Contact($request->except('_token')));
  
         return view('mailToUserConfirm');
@@ -30,12 +33,14 @@ class ContactController extends Controller
     		return view('contactSiteView');
     	}
 
-    public function ContactSiteSend()
+    public function contactSiteSend(ContactRequest $request)
     	{
-    		Mail::to('enes.er2709@gmail.com')->send(new Contact($request->except('_token')));
 
-    		Session::flash('status', 'Votre mail a été envoyer, nous nous efforçons de vous répondre dans plus bref délais.')
+    		Mail::to('enes.er2709@gmail.com') 
+            ->send(new Contact($request->except('_token')));
 
-    		return view('home');
+    		Session::flash('status', 'Votre mail a été envoyer, nous nous efforçons de vous répondre dans les plus bref délais.');
+
+    		return view('mailToUserConfirm');
     	}
 }

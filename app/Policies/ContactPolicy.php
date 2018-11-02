@@ -30,7 +30,7 @@ class ContactPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->isAdminOrSuperAdmin();
     }
 
     /**
@@ -57,8 +57,4 @@ class ContactPolicy
         //
     }
 
-    public function sendToSite(User $user, Contact $contact)
-        {
-            return isUser();
-        }
 }

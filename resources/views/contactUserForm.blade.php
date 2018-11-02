@@ -8,9 +8,6 @@
 
 {{ Form::open([ 'url'=>'contactUser' ,'class'=>'form-vertical offset-lg-4 col-lg-4 contactUserForm' ]) }}
 
-	{{ Form::hidden('from', 'enes.er2709@gmail.com') }}
-
-
 	<div class="form-group">
 	{{ Form::label('Nom : ',null) }}
 	{{ Form::text('name', 'Administration Dishelp') }}
@@ -29,7 +26,7 @@
 	{!! $errors->first('message', '<div class="alert alert-warning"> :message </div>') !!}
 	</div>
 	
-	{{ Form::hidden('mail', $user->email) }}
+	{{ Form::hidden('email', $user->email) }}
 
 
 	{{ Form::submit('envoyer', ['class'=>'btn button submitContactForm']) }}

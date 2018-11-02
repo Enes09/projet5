@@ -41,4 +41,4 @@ Route::post('contactUser', 'ContactController@contactUser');
 
 Route::get('contactSite', 'ContactController@contactSite');
 
-Route::post('ContactSite', 'COntactController@ContactSiteSend');
+Route::post('contactToSite', 'ContactController@contactSiteSend');

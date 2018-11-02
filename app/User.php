@@ -110,7 +110,7 @@ class User extends Authenticatable
 
         public function isAdminOrSuperAdmin()
             {
-                if($this->admin === 1 || $this->superAdmin === 1)
+                if($this->admin === 1 || $this->super_admin === 1)
                     {
                         return true;
                     }

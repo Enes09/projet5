@@ -25,11 +25,11 @@ class ContactRequest extends FormRequest
     {
         return [
             
+        
             'name'=>'required|max:255',
             'subject'=>'required|max:255',
             'message'=>'required|max:700',
-            'mail'=>'required|email',
-
+            'email'=>'email',
         ];
     }
 }
