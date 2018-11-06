@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\User;
-use App\odel=Contact;
+use App\Mail\Contact;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ContactPolicy
@@ -17,7 +17,7 @@ class ContactPolicy
      * @param  \App\odel=Contact  $odel=Contact
      * @return mixed
      */
-    public function view(User $user, odel=Contact $odel=Contact)
+    public function view(User $user, Contact $contact)
     {
         //
     }
@@ -30,7 +30,7 @@ class ContactPolicy
      */
     public function create(User $user)
     {
-        return $user->isAdminOrSuperAdmin();
+        return true; //$user->isAdminOrSuperAdmin(); 
     }
 
     /**
@@ -40,7 +40,14 @@ class ContactPolicy
      * @param  \App\odel=Contact  $odel=Contact
      * @return mixed
      */
-    public function update(User $user, odel=Contact $odel=Contact)
+
+
+    public function send(User $user, Contact $contact)
+        { 
+           return true; //$user->isAdminOrSuperAdmin(); 
+        } 
+
+    public function update(User $user, Contact $contact)
     {
         //
     }
@@ -52,7 +59,7 @@ class ContactPolicy
      * @param  \App\odel=Contact  $odel=Contact
      * @return mixed
      */
-    public function delete(User $user, odel=Contact $odel=Contact)
+    public function delete(User $user, Contact $contact)
     {
         //
     }

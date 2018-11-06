@@ -30,7 +30,7 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        //
+        // 
     }
 
     /**
@@ -61,5 +61,15 @@ class UserPolicy
     public function contactUser(User $user)
         {
             return $user->isAdminOrSuperAdmin();
+        }
+
+    public function promote (User $user)
+        {
+            return $user->isSuperAdmin();
+        }
+
+    public function demote (User $user)
+        {
+            return $user->isSuperAdmin();
         }
 }

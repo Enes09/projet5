@@ -33,4 +33,5 @@ class Contact extends Mailable
     {
          $this->from('enes.er2709@gmail.com')->view('emails.contactModel');   
     }
+
 }

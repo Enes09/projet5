@@ -260,6 +260,19 @@ td.tableTitle{
 	background: #ff9659 !important;
 	color: white;
 }
+
+.btn.button.promote{
+	position: absolute;
+	bottom: 50px;
+	right: 20px;
+}
+
+.btn.button.demote{
+	position: absolute;
+	bottom: 70px;
+	right: 20px;
+}
+
 .profilData>a:hover{
 	color:white;
 }

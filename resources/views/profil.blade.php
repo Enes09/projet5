@@ -17,10 +17,28 @@
 	<p><strong>Date de naissance : </strong>{{ $user->birth_date }} </p>
 	<p><strong>Date d'inscription : </strong>{{ $user->created_at }} </p>
 
+@can('promote', $user)
+
+	@if($user->admin === 0)
+		<a class="btn button promote" href=" {{ route('user.promote', $user->id) }} ">Promouvoir Admin</a>
+	@endif
+
+@endcan
+
+@can('demote', $user)
+
+	@if($user->admin===1)
+		<a class="btn button demote" href=" {{ route('user.demote', $user->id) }} ">Destituer</a>
+	@endif
+
+@endcan
 
 @can('update', $user)
-<a class="btn button" href=" {{ route('user.edit', $user->id) }} ">Modifier</a>
+<a class="btn button " href=" {{ route('user.admin', $user->id) }} ">Modifier</a>
 @endcan
+
+
+
 
 </div>
 

@@ -116,4 +116,31 @@ class UserController extends Controller
 
             return view('contactUserForm',['user'=>$user]);
         }
+
+
+    public function promote($id)
+        {
+            $this->authorize('promote', User::class); 
+
+            $user = User::find($id);
+
+            $user->admin = 1;
+
+            $user->save();
+
+            return view('confirmAdmin', ['user'=>$user, 'admin'=>1]);
+        }
+
+    public function demote($id)
+        {
+            $this->authorize('demote', User::class); 
+
+            $user = User::find($id);
+
+            $user->admin = 0;
+
+            $user->save();
+
+            return view('confirmAdmin', ['user'=>$user, 'admin'=>0]);
+        }
 }

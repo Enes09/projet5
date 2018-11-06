@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\Contact;
 use App\Http\Requests\ContactRequest;
 use Illuminate\Support\Facades\Session;
+use App\User;
+use Auth;
 
 class ContactController extends Controller
 {
@@ -20,7 +22,6 @@ class ContactController extends Controller
 
     public function contactUser (ContactRequest $request)
     {
-    	$this->authorize('create');
 
         Mail::to($request->email)
             ->send(new Contact($request->except('_token')));
@@ -43,4 +44,5 @@ class ContactController extends Controller
 
     		return view('mailToUserConfirm');
     	}
+
 }

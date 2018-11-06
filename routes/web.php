@@ -42,3 +42,7 @@ Route::post('contactUser', 'ContactController@contactUser');
 Route::get('contactSite', 'ContactController@contactSite');
 
 Route::post('contactToSite', 'ContactController@contactSiteSend');
+
+Route::get('promote/{id}',  ['as'=>'user.promote', 'uses'=> 'UserController@promote'])->where('id','^[1-9]\d*$');
+
+Route::get('demote/{id}',  ['as'=>'user.demote', 'uses'=> 'UserController@demote'])->where('id','^[1-9]\d*$');
