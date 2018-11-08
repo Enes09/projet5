@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests\UserRequest;
 use Mail;
+use Illuminate\Support\Facades\Redirect;
 
 
 class UserController extends Controller
@@ -105,7 +106,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->authorize('delete', User::find($id));
+
+        $user = User::find($id);
+
+        $user->delete();
+
+        return Redirect::back();
     }
 
     public function contact($id)

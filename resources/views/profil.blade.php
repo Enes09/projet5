@@ -33,8 +33,18 @@
 
 @endcan
 
+@can('delete', $user)
+	<div style="text-align: right;">
+		{{ Form::open([ 'action'=>['UserController@destroy', $user->id], 'id'=>'deleteUser' ]) }}
+					{{ method_field('DELETE') }}
+					{{  Form::submit('Supprimer', ['class'=>'btn button'])}}
+				{{ Form::close() }}
+
+	</div>
+@endcan
+
 @can('update', $user)
-<a class="btn button " href=" {{ route('user.admin', $user->id) }} ">Modifier</a>
+<a class="btn button " href=" {{ route('user.edit', $user->id) }} ">Modifier</a>
 @endcan
 
 

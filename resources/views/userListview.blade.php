@@ -30,7 +30,8 @@
 
 			<td class="userLinks" > 
 
-				{{ Form::open([ 'id'=>'deleteUser' ]) }}
+				{{ Form::open([ 'action'=>['UserController@destroy', $user->id], 'id'=>'deleteUser' ]) }}
+					{{ method_field('DELETE') }}
 					{{  Form::submit('Supprimer', ['class'=>'btn button'])}}
 				{{ Form::close() }}
 

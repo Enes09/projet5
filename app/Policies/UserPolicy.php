@@ -53,9 +53,9 @@ class UserPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function delete(User $user, User $user)
+    public function delete(User $user)
     {
-        //
+        return $user->isSuperAdmin();
     }
 
     public function contactUser(User $user)
