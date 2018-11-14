@@ -60,7 +60,7 @@ class User extends Authenticatable
 
     public function isUser()
         {
-            if(Auth::user())
+            if(Auth::check())
                 {
                     return true;
                 }

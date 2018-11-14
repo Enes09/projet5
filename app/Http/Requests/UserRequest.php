@@ -29,7 +29,7 @@ class UserRequest extends FormRequest
             'name'=>'required|max:255',
             'last_name'=>'required|max:255',
             'pseudo'=> 'required|max:255|unique:users,pseudo,'.$this->id,
-            'birth_date'=>'required|max:255',
+            'birth_date'=>'required|max:255|date',
             'email'=>'required|email|unique:users,email,'.$this->id,
 
         ];

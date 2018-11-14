@@ -2,13 +2,13 @@
 
 @section('content')
 
-<h3> Liste des abonnés :  </h3>
+<h3 class="userListViewH3"> Liste des abonnés :  </h3>
 
-<div class="offset-lg-1">
+<div class="offset-lg-1 offset-sm-1">
 {{$users->render("pagination::bootstrap-4")}}
 </div>
 
-	<table class="userLabel offset-lg-2 col-lg-8" >
+	<table class="userLabel offset-md-2 col-md-8 offset-lg-2 col-lg-8  " >
 		<tr>
 			<td class="tableTitle" > Nom </td>
 			<td class="tableTitle" > Prénom </td>
@@ -24,15 +24,15 @@
 		<tr>
 			<td > {{ $user->last_name }} </td>
 			<td > {{ $user->name }} </td>
-			<td class="userLinks "> <a class="btn button show" href=" {{ route('user.show', $user->id) }} ">Voir</a> </td>
-			<td class="userLinks " > <a class="btn button contact"  href=" {{ route('user.contact', $user->id) }} ">Contacter</a> </td>
+			<td class="userLinks "> <a id="show" class="btn button show" href=" {{ route('user.show', $user->id) }} ">Voir</a> </td>
+			<td class="userLinks contactTd" > <a class="btn button contact"  href=" {{ route('user.contact', $user->id) }} ">Contacter</a> </td>
 
 
-			<td class="userLinks" > 
+			<td class="userLinks deleteTd" > 
 
 				{{ Form::open([ 'action'=>['UserController@destroy', $user->id], 'id'=>'deleteUser' ]) }}
 					{{ method_field('DELETE') }}
-					{{  Form::submit('Supprimer', ['class'=>'btn button'])}}
+					{{  Form::submit('Supprimer', ['class'=>'btn button deleteUser'])}}
 				{{ Form::close() }}
 
 			 </td>
@@ -43,8 +43,9 @@
 @endforeach
 	</table>
 
-<div class="offset-lg-1">
+<div class="offset-lg-1 offset-sm-1">
 {{$users->render("pagination::bootstrap-4")}}
 </div>
+
 
 @endsection

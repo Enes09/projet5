@@ -72,4 +72,9 @@ class UserPolicy
         {
             return $user->isSuperAdmin();
         }
+
+    public function profil(User $user)
+        {
+            return $user->isUser();
+        }
 }

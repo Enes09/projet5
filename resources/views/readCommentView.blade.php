@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title')
-commentaire du billet
+Commentaire
 @endsection
 
 @section('content')
@@ -121,7 +121,7 @@ commentaire du billet
 				<a class="commentAllow btn" href=" {{ route('comment.allow', $comment->id) }} ">Valider <i class="fas fa-check-circle"></i></a>
 				@endcan
 			@else
-			<span>Ce message  été validé.</span>
+			<span>Message validé.</span>
 			@endif
 
 

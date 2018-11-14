@@ -66,6 +66,14 @@ form{
 form#deleteForm{
 	display: inline;
 	font-size: 1em;
+	position: absolute;
+    right: 5px;
+}
+
+form#deleteForm>input{
+	    position: absolute;
+    right: 0;
+    padding:0px !important;
 }
 
 .submit{
@@ -262,15 +270,25 @@ td.tableTitle{
 }
 
 .btn.button.promote{
-	position: absolute;
-	bottom: 50px;
-	right: 20px;
+	padding:3px !important;
+	background: #f4aa42;
+	color: white;
+	float: left;
 }
 
 .btn.button.demote{
-	position: absolute;
-	bottom: 70px;
-	right: 20px;
+	background: #f4aa42;
+	color: white;
+	float: left;
+	padding:3px !important;
+}
+
+.updateUser{
+	background:#41a9f4;
+	color:white;
+	padding:3px !important;
+	float: left;
+	margin-left: 10px;
 }
 
 .profilData>a:hover{
@@ -313,14 +331,26 @@ footer{
 	position: relative;
 	border-top: solid 2px #ededed;
 	border-radius: 20px;
+	margin-top: 100px;
 }
 
-footer>a{
-	position: absolute;
-	bottom: 10%;
-	right: 5%;
+.contactForm{
 	background: #727272;
 	color: white;
+	margin-top: 20px;
+}
+
+#legelMentions{
+	margin:10px;
+	height: 10px;
+}
+
+#legelMentions:hover{
+	text-decoration: underline !important;
+}
+
+#socialLink{
+	
 }
 
 header{
@@ -355,4 +385,224 @@ form.contactSiteForm>div>textarea{
 	position: absolute;
 	bottom: 10px;
 	right: 10px;
+}
+
+/*  nous commençons ici le template et la page d'acceuil  */
+.login{
+	float: right;
+	background: #ffc156;
+	color: white;
+	margin:10px;
+}
+
+.register{
+	float:right;
+	clear: both;
+	background: #1d72f9;
+	color: white;
+	margin:10px;
+}
+
+.logout{
+	float: right;
+	margin: 10px;
+	background: #ff4b1e;
+	color: white;
+}
+
+.content{
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+label,.registerHeading{
+	font-weight: bold;
+}
+
+.loginContainer{
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.resetEmail{
+	margin-bottom: 50px;
+	margin-top: 50px;
+}
+
+.reset{
+	margin-bottom: 50px;
+	margin-top: 50px;
+}faire un logo
+
+#mainHeader{
+	position: relative;
+}
+
+ul#navbar{ 
+	position: absolute;
+	bottom: -2px;
+	margin-bottom: 0px !important;
+	width: 100%;
+	border-top: 1px solid #f4f4f4;
+	border-bottom: 1px solid #f4f4f4;
+	border-bottom-right-radius: 15px;
+	border-bottom-left-radius: 15px;
+	background: #f4f4f4;
+}
+
+#navbar > li > a{
+	color: white !important;
+}
+
+#navbar > li.navbarMenu{
+	border-radius: 5px;
+	background: #939393;
+	transition-property: transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+}
+
+
+#navbar >li.navbarMenu:hover{
+	transform: translateY(-2px);
+	box-shadow: 2px 2px 2px #939393;
+	background: #db7c00;
+	color:white;
+}
+
+h1{
+	display: inline;
+}
+
+.oups{
+	text-align: center;
+}
+
+.homeReturnButton{
+	background:  #f23a02;
+	color: white;
+}
+
+h3.userListViewH3{
+	margin-top: 50px !important;
+	margin-bottom: 50px !important;
+}
+
+#burgerMenu{
+	display: none;
+	position: fixed;
+	top: 10px;
+	right: 24px;
+	height: 40px;
+	z-index: 4;
+}
+
+.burgerButton{
+	color: white;
+
+}
+
+#burgerMenu>ul>li{
+	list-style: none;
+	background: #c4c4c4;
+	color: white;
+	border-top: 0.5px solid white;
+}
+
+li.firstLink{
+	border-top: none !important;
+}
+
+#burgerMenu>button{
+	margin-bottom: 135px;
+}
+
+#burgerMenu>ul{
+	display: none;
+	margin-top: -2px;
+}
+
+#burgerMenu>ul>li>a{
+	color:white;
+}
+
+#burgerMenu>ul>li>a:hover{
+	color:white;
+}
+
+#welcome > p{
+	text-align: justify;
+}
+
+#linkAndForm, #legelMentions, .contactData{
+	margin: 20px;
+}
+
+.userAction{
+		text-align: center;
+		height: 100px;
+
+	}
+
+
+@media screen and (max-width:700px)
+{
+	#navbar{
+		display: none;
+	}
+
+	#burgerMenu{
+		display: block;
+	}
+
+	.logout{
+		float: none;
+		position: absolute;
+		top:40px;
+		right: 0px;
+		z-index: 3;
+	}
+
+	.login{
+		float: none;
+		position: absolute;
+		top:40px;
+		right: 0px;
+		z-index: 3;
+	}
+
+	.register{
+		float: none;
+		position: absolute;
+		top:80px;
+		right: 0px;
+		z-index: 3;
+	}
+
+	h1{
+		font-size: 2em !important;
+		display: block;
+		text-align: center !important;
+		bottom: 25px;
+		z-index: 3;
+	}
+
+	img.logo{
+		width: 200px;
+		z-index: 2;
+		padding-left: 0px;
+	}
+
+	.userLabel{
+		font-size: 0.8em;
+	}
+
+	/* postview */
+
+	.post>div>span.link{
+		text-align: center;
+		line-height: 2.5;
+	}
+
+
 }
