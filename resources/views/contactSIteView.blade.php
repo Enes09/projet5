@@ -1,10 +1,10 @@
-@extends('template')
+ @extends('template')
 
 @section('content')
 
 <h3> Formulaire de contact :  </h3>
 
-{{ Form::open([ 'url'=>'contactToSite', 'class'=>'form-vertical offset-lg-4 col-lg-4 contactSiteForm' ]) }}
+{{ Form::open([ 'url'=>'contactToSite', 'class'=>'form-vertical offset-md-3 col-md-7 offset-lg-4 col-lg-4 contactSiteForm' ]) }}
 
 	<div class="form-group" >
 		@if(AUth::check())
@@ -30,7 +30,7 @@
 
 	<div class="form-group" >
 		{{ Form::label('Message : ', null) }}<br/>
-		{{ Form::textarea('message') }}
+		{{ Form::textarea('message',null, ['class'=>'contactSiteArea']) }}
 		{!! $errors->first('message', '<div class="alert alert-warning" > :message </div>') !!}
 	</div>
 

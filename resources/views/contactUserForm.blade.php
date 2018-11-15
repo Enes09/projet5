@@ -22,7 +22,7 @@
 
 	<div class="form-group">
 	{{ Form::label('Message : ', null) }}<br>
-	{{ Form::textarea('message') }}
+	{{ Form::textarea('message', null, ['class'=>'contactUserTextarea']) }}
 	{!! $errors->first('message', '<div class="alert alert-warning"> :message </div>') !!}
 	</div>
 	

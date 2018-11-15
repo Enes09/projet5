@@ -25,14 +25,14 @@
 			<td > {{ $user->last_name }} </td>
 			<td > {{ $user->name }} </td>
 			<td class="userLinks "> <a id="show" class="btn button show" href=" {{ route('user.show', $user->id) }} ">Voir</a> </td>
-			<td class="userLinks contactTd" > <a class="btn button contact"  href=" {{ route('user.contact', $user->id) }} ">Contacter</a> </td>
+			<td class="userLinks contactTd" > <a class="btn button contact" href=" {{ route('user.contact', $user->id) }} ">Contacter</a> </td>
 
 
 			<td class="userLinks deleteTd" > 
 
 				{{ Form::open([ 'action'=>['UserController@destroy', $user->id], 'id'=>'deleteUser' ]) }}
 					{{ method_field('DELETE') }}
-					{{  Form::submit('Supprimer', ['class'=>'btn button deleteUser'])}}
+					{{  Form::submit('Supprimer', ['class'=>'btn button deleteUser', 'onclick'=>'return confirm("êtes vous sûr de vouloir banir '.  $user->pseudo .' ? ")'])}}
 				{{ Form::close() }}
 
 			 </td>

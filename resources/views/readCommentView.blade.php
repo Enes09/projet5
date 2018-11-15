@@ -44,7 +44,7 @@ Commentaire
 								{{ Form::open(['action'=>['PostController@destroy', $post->id],'id'=>'deleteForm' ,'method'=>'post']) }}
 
 									{{ method_field('DELETE') }}
-									{{ Form::submit('Supprimer', ['class'=>'delete btn button']) }}
+									{{ Form::submit('Supprimer', ['class'=>'delete btn button', 'onclick'=>'return confirm("êtes vous sûr de vouloir supprimer le billet intitulé '. $post->title .'? ")']) }}
 									
 								{{ Form::close() }}
 
@@ -87,7 +87,7 @@ Commentaire
 
 		@foreach($users as $user)
 			@if($user->id === $comment->user_id)
-			<p>Publier par : {{ $user->name }} </p>
+			<p>Publier par : <a href="{{ route('user.show', $user->id) }}">{{ $user->name }} <i class="fas fa-external-link-alt"></i></a></p>
 			@endif
 		@endforeach
 
@@ -129,7 +129,7 @@ Commentaire
 			{{ Form::open(['action'=>['CommentController@destroy', $comment->id], 'id'=>'deleteComment', 'method'=>'post']) }}
 				 {{ method_field('delete') }}
 				 {{ Form::hidden('id', $comment->id) }}
-				{{ Form::button('<i class="far fa-trash-alt"></i>', ['class' => 'btn btn-sm deleteComment', 'type' => 'submit']) }}
+				{{ Form::button('<i class="far fa-trash-alt"></i>', ['class' => 'btn btn-sm deleteComment', 'type' => 'submit', 'onclick'=>'return confirm("êtes vous sûr de vouloir supprimer ce commentaire ?")']) }}
 			{{ Form::close() }}
 			@endcan
 

@@ -11,7 +11,7 @@ $(function() {
 
 	var windowWidth = $(window).width();
 
-	if(windowWidth<768){
+	if(windowWidth<760){
 		
 		$('.logout').html('<i class="fas fa-sign-out-alt"></i>');
 		$('.login').html('<i class="fas fa-sign-in-alt"></i>');
@@ -24,6 +24,10 @@ $(function() {
 		
 		$('.deleteTd').css('display', 'none');
 		$('.contactTd').css('display', 'none');
+
+		$('textarea.contactUserTextarea').attr('cols',35);
+		$('textarea.contactSiteArea').attr('cols',35);
+
 	}
 
 });

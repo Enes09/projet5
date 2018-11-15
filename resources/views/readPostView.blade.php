@@ -52,7 +52,7 @@ Billet
 								{{ Form::open(['action'=>['PostController@destroy', $post->id],'id'=>'deleteForm' ,'method'=>'post']) }}
 
 									{{ method_field('DELETE') }}
-									{{ Form::submit('Supprimer', ['class'=>'delete btn button']) }}
+									{{ Form::submit('Supprimer', ['class'=>'delete btn button', 'onclick'=>'return confirm("êtes vous sûr de vouloir supprimer le billet intitulé '. $post->title .'? ")']) }}
 									
 								{{ Form::close() }}
 

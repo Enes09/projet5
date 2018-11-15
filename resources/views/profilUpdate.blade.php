@@ -2,7 +2,7 @@
 
 @section('content')
 
-{{ Form::open([ 'action'=>['UserController@update', $user->id], 'class'=>'form-vertical col-lg-5' ]) }}
+{{ Form::open([ 'action'=>['UserController@update', $user->id], 'class'=>'form-vertical offset-lg-4 col-lg-4 offset-lg-4 updateProfileForm' ]) }}
 {{ method_field('PUT') }}
 {{ Form::hidden('id',$user->id) }}
 
@@ -36,11 +36,11 @@
 		{{ $errors->first('email',  ':message') }}
 	</div>
 
-	{{ Form::submit('Modifier', ['class'=>'btn button']) }}
+	<div class="col-md-12 updateDiv">
+		{{ Form::submit('Modifier', ['class'=>'btn button updateButton']) }}
+	</div>
 
 {{ Form::close() }}
 
-
-<a class="btn button" href=""> Réinitialiser mon mot de passe </a>
 
 @endsection

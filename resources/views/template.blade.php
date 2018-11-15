@@ -4,7 +4,7 @@
 
 	<title>@yield('title')</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href=" {{ URL::asset('css/Dishelp.css') }} ">
 	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
@@ -122,6 +122,8 @@
 	</div>
 
 </div>
+
+
 
 	<script
   src="https://code.jquery.com/jquery-3.3.1.min.js"

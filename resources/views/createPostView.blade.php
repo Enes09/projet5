@@ -4,6 +4,8 @@
 	Nouveau billet
 @endsection
 
+<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=bziizowrerw8frw7u16pkbzufq9pq4whkn951ppg5tz5bnpb"></script>
+
 <script>
 
 	tinymce.init({

@@ -38,14 +38,19 @@
 <a class="btn button updateUser" href=" {{ route('user.edit', $user->id) }} ">Modifier</a>
 @endcan
 
+@if(Auth::user()->super_admin === 1 || Auth::user()->admin === 1)
+<a class="btn button contactFromProfile"  href=" {{ route('user.contact', $user->id) }} ">Contacter</a>
+@endif
 
 @can('delete', $user)
 	<div style="text-align: right;">
-		{{ Form::open([ 'action'=>['UserController@destroy', $user->id], 'id'=>'deleteUser', 'style'=>'position:absolute; right:5px; bottom:10px;' ]) }}
-					{{ method_field('DELETE') }}
-					{{  Form::submit('Supprimer', ['class'=>'btn button'])}}
-				{{ Form::close() }}
 
+		@if($user->super_admin != 1)
+			{{ Form::open([ 'action'=>['UserController@destroy', $user->id], 'id'=>'deleteUser', 'style'=>'position:absolute; right:5px; bottom:10px;' ]) }}
+						{{ method_field('DELETE') }}
+						{{  Form::submit('Supprimer', ['class'=>'btn button', 'onclick'=>'return confirm("êtes vous sûr de vouloir banir '.  $user->pseudo .' ? ")'])}}
+					{{ Form::close() }}
+		@endif
 	</div>
 @endcan
 </div>

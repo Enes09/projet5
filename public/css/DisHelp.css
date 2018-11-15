@@ -14,7 +14,11 @@
 }
 
 .post>div>span.link{
-	text-align: right; 
+	/*text-align: right;*/ 
+}
+
+.link{
+	height: 50px;
 }
 
 .post>div>span.date{
@@ -230,6 +234,14 @@ td.userLinks{
 	color: white;
 }
 
+.contactFromProfile{
+	background: #ff9659 !important;
+	color: white;
+	padding: 3px !important;
+	float:left;
+	margin-left: 10px;
+}
+
 .show{
 	background: #4a799e !important;
 	color: white;
@@ -432,7 +444,7 @@ label,.registerHeading{
 .reset{
 	margin-bottom: 50px;
 	margin-top: 50px;
-}faire un logo
+}
 
 #mainHeader{
 	position: relative;
@@ -544,6 +556,22 @@ li.firstLink{
 
 	}
 
+/* profile update */
+
+.updateProfileForm{
+	margin-top: 100px;
+	padding: 20px;
+	padding-bottom: 20px;
+}
+
+.updateButton{
+	float: right;
+	margin-bottom: 20px;
+}
+
+.updateDiv{
+	height: 50px;
+}
 
 @media screen and (max-width:700px)
 {
@@ -600,9 +628,16 @@ li.firstLink{
 	/* postview */
 
 	.post>div>span.link{
-		text-align: center;
 		line-height: 2.5;
 	}
 
+	a.comments{
+		float: left;
+		padding: 1px !important;
+	}
 
+	a.update{
+		float: left;
+		padding: 1px !important;
+	}
 }
