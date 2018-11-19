@@ -573,6 +573,23 @@ li.firstLink{
 	height: 50px;
 }
 
+.fas.fa-exclamation-circle.menu{
+	color: white;
+}
+
+.profilLink{
+	cursor: pointer;
+	color: blue !important;
+}
+
+.profilLink:hover{
+	text-decoration: underline !important;
+}
+
+.legalDiv{
+	margin-top: 100px;
+}
+
 @media screen and (max-width:700px)
 {
 	#navbar{

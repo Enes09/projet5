@@ -18,6 +18,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('legal', function () { return view('legalMentions'); });
+
 Route::resource('post', 'PostController');
 
 Route::get('comment/alert/{comment}', ['as' => 'comment.alert', 'uses'=> 'CommentController@alert']);
@@ -29,6 +31,8 @@ Route::get('comment/dislike/{comment}', ['as' => 'comment.dislike', 'uses'=> 'Co
 Route::get('comment/allow/{comment}', ['as' => 'comment.allow', 'uses'=> 'CommentController@allow']);
 
 Route::get('comment/{post_id}', ['as' => 'comment.index', 'uses' => 'CommentController@index'])->where('post_id','^[1-9]\d*$');
+
+Route::get('alerted', 'CommentController@alerted');
 
 Route::resource('comment', 'CommentController', ['except'=>['index']] );
 

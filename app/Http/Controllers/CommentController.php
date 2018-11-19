@@ -60,6 +60,7 @@ class CommentController extends Controller
         $comment->user_id = Auth::user()->id;
         $comment->content = $request->content;
         $comment->post_id = $request->post_id;
+        $comment->alerted = 0;
 
         $comment->save();
 
@@ -139,6 +140,8 @@ class CommentController extends Controller
 
             $this->authorize('alert', $comment);
 
+            $comment->where('id', $comment->id)->update(['alerted'=>$comment->alerted+1]);
+
             $comment->alertedByUsers()->save(Auth::user());
 
             Session::flash('status', 'Le commentaire a été signaler.');
@@ -177,11 +180,27 @@ class CommentController extends Controller
 
 
     
+    public function alerted ()
+        {
+           $this->authorize('update', Comment::class);
 
+           $alerted_comments = DB::table('alerted_comment')->get();
+
+           $comments_number = DB::table('alerted_comment')->count();
+
+           $AlertedComments=[];
+
+           for( $i = 0; $i <= $comments_number-1; $i++){
+
+                array_push($AlertedComments, $alerted_comments[$i]->comment_id);
+           }
+
+           $comments = Comment::whereIn('id', $AlertedComments)->orderBy('created_at', 'desc')->paginate(5);
+
+           $users = User::get();
+
+            return view('alertedCommentsView', ['comments' => $comments, 'users'=>$users] );
+
+        }
     
-
-    
-
-    
-
 }

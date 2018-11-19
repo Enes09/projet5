@@ -18,7 +18,7 @@
 	{{ Html::image('images/dishelpLogo.jpg', 'Le logo de dishelp', ['class'=>'logo col-md-3']) }}
 
 
-	<h1 class="col-md-3 offset-md-2"> 
+	<h1 class="col-md-4 offset-md-2" style="text-align: center;"> 
 		@if(View::hasSection('title'))
 			@yield('title')
 		@else
@@ -39,7 +39,7 @@
 
 	<ul id="navbar">
 		<li class="btn button navbarMenu" ><a  href=" {{ url('/') }} "><i class="fas fa-home"></i> Acceuil</a></li>
-		<li class="btn button navbarMenu " ><a href=" {{ route('post.index') }} "><i class="fas fa-book-open"></i> Billet</a></li>
+		<li class="btn button navbarMenu" ><a href=" {{ route('post.index') }} "><i class="fas fa-book-open"></i> Billet</a></li>
 
 		@if(Auth::check())
 			@if(Auth::user()->super_admin === 1)
@@ -54,6 +54,8 @@
 		@if(Auth::check())
 			@if(Auth::user()->super_admin === 1 || Auth::user()->admin === 1)
 			<li class="btn button navbarMenu " ><a href=" {{ route('user.index') }} "><i class="fas fa-users"></i> Gestion des abonnés</a></li>
+
+			<li class="btn button navbarMenu"><a href=" {{ url('alerted') }} "><i class="fas fa-exclamation-circle menu"></i> Alert</a></li>
 			@endif
 		@endif  
 
@@ -79,6 +81,8 @@
 		@if(Auth::check())
 			@if(Auth::user()->super_admin === 1 || Auth::user()->admin === 1)
 		<li class="btn button" ><a href=" {{ route('user.index') }} "><i class="fas fa-users"></i></a></li>
+
+		<li class="btn button navbarMenu"><a href=" {{ url('alerted') }} "><i class="fas fa-exclamation-circle menu"></i></a></li>
 			@endif
 		@endif 
 
@@ -108,7 +112,7 @@
 		<p> <i class="fas fa-clock"></i> Horaires : 9h00 - 13h00 / 14h30 - 17h00 </p>
 	</div>
 
-	<a class="col-md-3" id="legelMentions" href="">Mentions légal <i class="fas fa-external-link-alt"></i> </a>
+	<a class="col-md-3" id="legelMentions" href=" {{ url('legal') }} ">Mentions légal <i class="fas fa-external-link-alt"></i> </a>
 	
 	<div id="linkAndForm">	
 		<div class="" id="socialLink">

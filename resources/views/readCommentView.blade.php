@@ -87,13 +87,19 @@ Commentaire
 
 		@foreach($users as $user)
 			@if($user->id === $comment->user_id)
-			<p>Publier par : <a href="{{ route('user.show', $user->id) }}">{{ $user->name }} <i class="fas fa-external-link-alt"></i></a></p>
+			<p>Publier par : 
+				@if(Auth::check())  
+				<a href="{{ route('user.show', $user->id) }}">{{ $user->name }} <i class="fas fa-external-link-alt"></i></a></p>
+				@else
+				<a class="profilLink" onclick="return alert('connectez pour voir le profil de cette personne.')">{{ $user->name }} <i class="fas fa-external-link-alt"></i></a></p>
+				@endif
 			@endif
 		@endforeach
 
 		<p> {{ $comment->content }} </p>
 
 		<span class="commentDate">
+			
 			{{ \Carbon\Carbon::parse($comment->created_at)->format('d/m/y à H:i:s')}}
 		</span>
 
