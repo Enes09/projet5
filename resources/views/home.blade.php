@@ -36,4 +36,53 @@
 	</p>
 </article>
 
+
+
+
+<script src="https://js.stripe.com/v3/"></script>
+
+
+
+<h3 class="offset-md-3">Faire un don à l'association : </h3>
+
+<form action="{{ url('api/payment') }}" method="post" id="payment-form" class="offset-md-3 col-md-6" onsubmit=" return false;">
+
+
+	<p id="MontantDuDon"><strong>Montant du don : </strong></p>
+
+<div id="stripeBtn">
+	<button type="button" class="btn btn-secondary stripeBtn" id="stripeBtn5">5,00€</button>
+	<button type="button" class="btn btn-secondary stripeBtn" id="stripeBtn10">10,00€</button>
+	<button type="button" class="btn btn-secondary stripeBtn" id="stripeBtn20">20,00€</button>
+	<button type="button" class="btn btn-secondary stripeBtn" id="stripeBtn50">50,00€</button>
+</div>
+
+
+<div class="input-group col-md-6">
+  <input type="text" name="donationInput" id="donationInput" class="form-control" aria-label="Amount" placeholder="5,00" value="5,00">
+  <div class="input-group-append">
+    <span class="input-group-text euroSpan">€</span>
+  </div>
+</div>
+<span id="stripeError" class="alert alert-danger"> Le format du montant doit correspondre à 0,00 </span>
+<p>*Format(0,00)</p>
+
+<br/>
+
+  <div class="form-row">
+    <label for="card-element">
+
+    </label>
+    <div id="card-element">
+      <!-- A Stripe Element will be inserted here. -->
+    </div>
+
+    <!-- Used to display form errors. -->
+    <div id="card-errors" role="alert"></div>
+  </div>
+
+  <button class="btn btn-primary" id="submitStripe">Faire un don</button>
+</form>
+
+
 @endsection

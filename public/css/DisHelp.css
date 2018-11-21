@@ -590,6 +590,97 @@ li.firstLink{
 	margin-top: 100px;
 }
 
+/* ici nous avons le css de stripe */
+
+.StripeElement {
+  background-color: white;
+  height: 40px;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid #ededed;
+  box-shadow: 2px 2px 2px 0 #ededed;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+  width: 100%;
+  margin-bottom: 80px;
+}
+
+.StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+#submitStripe{
+	margin: 15px;
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+}
+
+#payment-form{
+	position: relative;
+}
+
+.radioType{
+	display: inline;
+}
+
+.labelStripe{
+	background: #afafaf;
+	color: white;
+	padding: 10px;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px #afafaf;
+}
+
+#donationInput{
+	border-radius: 5px;
+}
+
+.input-group.col-md-6 +p{
+	display: inline;
+	color: #b5b5b5;
+	margin-left: 15px;
+}
+
+#inputStripe{
+	display: inline;
+	margin-left: 25px;
+}
+
+
+#stripeBtn{
+	margin-bottom: 20px;
+	margin-left: 15px;
+}
+
+#MontantDuDon{
+	margin-top: 25px;
+}
+
+
+#stripeError{
+	display: none;
+	position: absolute;
+    right: 5px;
+    top: 110px;
+}
+
+#stripeError+p{
+	margin-left: 15px;
+}
+
+.form-row{
+	margin-left: 15px;
+}
+
 @media screen and (max-width:700px)
 {
 	#navbar{

@@ -18,7 +18,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('legal', function () { return view('legalMentions'); });
+Route::get('legal', 'PublicController@legal');
 
 Route::resource('post', 'PostController');
 

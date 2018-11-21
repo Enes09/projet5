@@ -28,7 +28,7 @@
 
 
 	@if (Auth::guest())
-		<a  class="btn button login" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i>Connexion</a>
+		<a  class="btn button login" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Connexion</a>
 		<a  class="btn button register" href="{{ route('register') }}"><i class="far fa-clipboard"></i> &nbsp;Inscription</a>
 	@else
 		<a class="btn button logout" href="{{ route('logout') }}"onclick="event.preventDefault();document.getElementById('logout-form').submit();">Deconnexion <i class="fas fa-sign-out-alt"></i> </a>
@@ -135,6 +135,8 @@
   crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
 
 	<script type="text/javascript" src="{{ URL::asset('js/dishelp.js') }}"></script>
 	
