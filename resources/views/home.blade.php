@@ -11,6 +11,42 @@
     @endif
 </div>
 
+
+
+<div id="sliderContainer" class="row col-sm-12" >
+  
+  <div id="arrowDivLeft" class="offset-md-2 col-md-1 offset-lg-2 col-lg-1 arrowDiv">
+	<span id="leftArrowSlide"> <i class="fas fa-caret-left fa-7x"></i> </span>
+  </div>
+
+<div id="slider" class="col-lg-6">
+
+    <figure class="slideImages" id="slide1" style="z-index: 3;"><!-- slide -->
+      {{ Html::image('images/slide1.jpg', 'personne aidant un enfant', ['class'=>'slide1Img']) }}
+      <figcaption>&nbsp;&nbsp;Là où il y'a une volonté, il y a un chemin.</figcaption>
+    </figure>
+
+    <figure class="slideImages" id="slide2" style="z-index: 2;">
+      {{ Html::image('images/slide2.jpg', 'la main d\'une personne agée tennant celui d\'un enfant',  ['class'=>'slide2Img']) }}
+      <figcaption>&nbsp; Risquer d'échouer seul <br/>&nbsp; ou <br/>&nbsp; Tenter de réussir enssemble ?</figcaption>
+    </figure>
+
+    <figure class="slideImages" id="slide3" style="z-index: 1;">
+      {{ Html::image('images/slide4.jpg', 'des enfants levant la main en classe',  ['class'=>'slide3Img']) }}
+      <figcaption>&nbsp;Enssemble pour porgresser.</figcaption>
+    </figure>
+
+</div>
+
+<div id="arrowDivRight" class="col-md-1 arrowDiv">
+    <span id="rightArrowSlide" > <i class="fas fa-caret-right fa-7x"></i> </span>
+</div>
+
+</div>
+
+
+
+
 <article class="col-md-10 offset-md-1" id="welcome">
 
 	<h3> Bienvenue sur Dishelp </h3>

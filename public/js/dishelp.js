@@ -1,10 +1,26 @@
 
 $(".burgerButton").click(function (){
-	$('.menuLink').fadeToggle();
-	$('.menuLink').css('display', 'inline-flex');
+
+	//$('.menuLink').fadeToggle();
+
+  if( $('.menuLink').css('display') === 'none' ){
+
+    $('.menuLink').fadeIn();
+    $('.menuLink').css('display', 'inline-flex');
+    setTimeout(function(){ 
+
+      $('.menuLink').fadeOut();
+      //$('.menuLink').css('display', 'none'); 
+
+  }, 3000);
+    
+  }
+  else if ($('.menuLink').css('display') === 'inline-flex') {
+    $('.menuLink').fadeOut();
+    //$('.menuLink').css('display', 'none');
+  }
+
 });
-
-
 
 
 
@@ -75,8 +91,99 @@ $(function() {
 
 	}
 
+var center = 1;
+
+  var slide1 = $('#slide1');
+  var slide2 = $('#slide2');
+  var slide3 = $('#slide3');
+
+function slideToRight (){
+
+  switch (center)
+    {
+      case 1:
+              slide1.fadeOut('slow');
+              slide2.fadeIn('slow');
+              center = 2;
+              break;
+
+      case 2: 
+              slide2.fadeOut('slow');
+              slide3.fadeIn('slow');
+              center = 3;
+              break;
+
+      case 3:
+              slide3.fadeOut('slow');
+              slide1.fadeIn('slow');
+              center = 1;
+              break;
+
+      default:
+              console.log('slide\'s center image\'s not found');
+    }     
+
+}
+
+function slideToLeft (){
+
+  switch (center)
+    {
+      case 1:
+              slide2.fadeOut('slow');
+              slide1.fadeOut('slow');
+              slide3.fadeIn('slow');
+              center = 3;
+              break;
+
+      case 2: 
+              slide2.fadeOut('slow');
+              slide1.fadeIn('slow');
+              center = 1;
+              break;
+
+      case 3:
+              slide3.fadeOut('slow');
+              slide2.fadeIn('slow ');
+              center = 2;
+              break;
+
+      default:
+              console.log('slide\'s center image\'s not found');
+    }     
+
+}
+
+var slideIntervall = setInterval(function(){ slideToRight(); }, 6000);
+
+//slide to right
+
+$('#arrowDivRight').click(function () {
+  clearInterval(slideIntervall);
+  slideToRight();
+  slideIntervall = setInterval(function(){ slideToRight(); }, 6000);
+});
+
+jQuery( window ).on('swiperight', function (event) { 
+  clearInterval(slideIntervall);
+  slideToRight();
+  slideIntervall = setInterval(function(){ slideToRight(); }, 6000);
+ });
 
 
+//slide to left
+
+$('#arrowDivLeft').click(function () {
+  clearInterval(slideIntervall);
+  slideToLeft();
+  slideIntervall = setInterval(function(){ slideToRight(); }, 6000);
+});
+
+jQuery( window ).on('swipeleft', function (event) { 
+  clearInterval(slideIntervall);
+  slideToLeft();
+  slideIntervall = setInterval(function(){ slideToRight(); }, 6000);
+ });
 
 //on commence ici à mettre en place stripe
 
