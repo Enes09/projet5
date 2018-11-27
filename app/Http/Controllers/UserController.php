@@ -7,7 +7,8 @@ use App\User;
 use App\Http\Requests\UserRequest;
 use Mail;
 use Illuminate\Support\Facades\Redirect;
-
+use Artesaos\SEOTools\SEOMeta;
+use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
 
 class UserController extends Controller
 {
@@ -16,11 +17,15 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    use SEOToolsTrait;
+    
     public function index()
     {
          $this->authorize('view', User::class);
 
          $users = User::orderBy('created_at', 'desc')->paginate(2);
+
+         $this->seo()->metatags()->addMeta('robots', 'noindex, nofollow');
 
          return view('userListView', ['users'=>$users]);
     }
@@ -56,6 +61,8 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
+        $this->seo()->metatags()->addMeta('robots', 'noindex, nofollow');
+
         return view('profil', ['user'=>$user] );
     }
 
@@ -70,6 +77,8 @@ class UserController extends Controller
         $this->authorize('update', User::find($id));
 
         $user = User::findOrFail($id);
+
+        $this->seo()->metatags()->addMeta('robots', 'noindex, nofollow');
 
         return view('profilUpdate', ['user'=>$user]);
     }
@@ -95,6 +104,8 @@ class UserController extends Controller
 
         $user->save();
 
+        $this->seo()->metatags()->addMeta('robots', 'noindex, nofollow');
+
         return view('profil', ['user'=>$user]);
     }
 
@@ -112,6 +123,8 @@ class UserController extends Controller
 
         $user->delete();
 
+        $this->seo()->metatags()->addMeta('robots', 'noindex, nofollow');
+
         return Redirect::back();
     }
 
@@ -120,6 +133,8 @@ class UserController extends Controller
             $this->authorize('contactUser', User::class);
 
             $user = User::find($id);
+
+            $this->seo()->metatags()->addMeta('robots', 'noindex, nofollow');
 
             return view('contactUserForm',['user'=>$user]);
         }
@@ -135,6 +150,8 @@ class UserController extends Controller
 
             $user->save();
 
+            $this->seo()->metatags()->addMeta('robots', 'noindex, nofollow');
+
             return view('confirmAdmin', ['user'=>$user, 'admin'=>1]);
         }
 
@@ -147,6 +164,8 @@ class UserController extends Controller
             $user->admin = 0;
 
             $user->save();
+
+            $this->seo()->metatags()->addMeta('robots', 'noindex, nofollow');
 
             return view('confirmAdmin', ['user'=>$user, 'admin'=>0]);
         }

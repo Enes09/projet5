@@ -7,6 +7,7 @@ use Auth;
 use Illuminate\Support\Facades\DB;
 use App\Comment;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Notifications\ResetPasswordFr;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -33,6 +34,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+
+    public function sendPasswordResetNotification($token)
+        {
+            $this->notify(new ResetPasswordFr($token));
+        }
+
 
     public function isSuperAdmin ()
         {

@@ -12,7 +12,8 @@ use App\Http\Requests\DeleteRequest;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
 use Illuminate\Support\Facades\Session;
-
+use Artesaos\SEOTools\SEOMeta;
+use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
 
 class CommentController extends Controller
 {
@@ -21,6 +22,9 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    use SEOToolsTrait;
+
     public function index($post_id)
     {
 
@@ -29,6 +33,9 @@ class CommentController extends Controller
         $users = User::get();
 
         $post = Post::find($post_id);
+
+        $this->seo()->setTitle('Dishelp comments/Dishelp commentaires');
+        $this->seo()->setDescription('Lecture de commentaire des billets Dishelp/ Read Dishelp comments of posts');
 
         return view('readCommentView', ['comments' => $comments, 'users' => $users, 'post' => $post] );
     
@@ -198,6 +205,8 @@ class CommentController extends Controller
            $comments = Comment::whereIn('id', $AlertedComments)->orderBy('created_at', 'desc')->paginate(5);
 
            $users = User::get();
+
+           $this->seo()->metatags()->addMeta('robots', 'noindex, nofollow');
 
             return view('alertedCommentsView', ['comments' => $comments, 'users'=>$users] );
 

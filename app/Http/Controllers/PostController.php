@@ -11,6 +11,8 @@ use App\Http\Controllers\DB;
 use Auth;
 use Illuminate\Support\Facades\Redirect;
 
+use Artesaos\SEOTools\SEOMeta;
+use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
 
 
 class PostController extends Controller
@@ -21,6 +23,8 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    use SEOToolsTrait;
+
     public function index(Post $post)
         {
             
@@ -29,10 +33,14 @@ class PostController extends Controller
 
             $users = User::get();
 
+            $this->seo()->setTitle('Dishelp Post/Dishelp Billet');
+            $this->seo()->setDescription('Lecture de billet Dishelp/ Read Dishelp posts');
+
             return view('readPostView', [ 
                 'postData' => $postData,
                 'users' => $users,
              ]);
+
         }
 
     /**
@@ -43,6 +51,8 @@ class PostController extends Controller
     public function create(Post $post)
     {
         $this->authorize('store', $post);
+
+        $this->seo()->metatags()->addMeta('robots', 'noindex, nofollow');
 
         return view('createPostView');
     }
@@ -93,6 +103,8 @@ class PostController extends Controller
 
         $post = Post::FindOrFail($id);
 
+        $this->seo()->metatags()->addMeta('robots', 'noindex, nofollow');
+
         return view('editPostView', ['post' => $post]);
     }
 
@@ -115,6 +127,8 @@ class PostController extends Controller
 
         $request->session()->flash('status', 'Le billet a été modifié.');
 
+        $this->seo()->metatags()->addMeta('robots', 'noindex, nofollow');
+
         return redirect('post');
     }
 
@@ -131,6 +145,8 @@ class PostController extends Controller
         $post = Post::find($id);
 
         $post->delete();
+
+        $this->seo()->metatags()->addMeta('robots', 'noindex, nofollow');
 
         return Redirect::back();
     }

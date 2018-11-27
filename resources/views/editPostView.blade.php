@@ -10,6 +10,8 @@
 
 	tinymce.init({
         selector : "textarea",
+        language: 'fr_FR',
+        language_url: 'http://localhost/projet5/public/js/fr_FR.js',
         plugins : ["advlist autolink lists link image charmap print preview anchor", "searchreplace visualblocks code fullscreen"],
         toolbar : "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent",
     });
