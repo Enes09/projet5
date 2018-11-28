@@ -28,7 +28,6 @@
 		@endif
 	</h1>
 
-
 	@if (Auth::guest())
 		<a  class="btn button login" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Connexion</a>
 		<a  class="btn button register" href="{{ route('register') }}"><i class="far fa-clipboard"></i> &nbsp;Inscription</a>
@@ -64,6 +63,7 @@
 	</ul>
 
 
+
 <div id="burgerMenu"> 
 	
 	<ul class="btn-group-vertical hidden menuLink">
@@ -95,14 +95,7 @@
 
 	</header>
 
-
-
 	@yield('content')
-
-
-
-
-
 
 <footer>
 
@@ -129,8 +122,6 @@
 
 </div>
 
-
-
 	<script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -141,6 +132,7 @@
 
 
 	<script type="text/javascript" src="{{ URL::asset('js/dishelp.js') }}"></script>
+	
 	
 </footer>
 

@@ -63,7 +63,7 @@ Commentaire
 		
 		{{ Form::hidden('post_id', $post->id) }}
 
-		{{ Form::submit('Publier', ['class'=>'btn button col-lg-12']) }}
+		{{ Form::submit('Publier', ['class'=>'btn btn-secondary col-lg-12']) }}
 		
 
 	{{ Form::close() }}

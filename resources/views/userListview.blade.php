@@ -14,7 +14,7 @@
 			<td class="tableTitle" > Prénom </td>
 			<td></td>
 			<td></td>
-			<td></td>
+			<td id="totalUserContainer" ><div id="totalUser" class="btn btn-secondary"  > <i class="fas fa-user"></i> Abonnés : {{ $usersNumber }}</div> </td>
 
 		</tr>
 	

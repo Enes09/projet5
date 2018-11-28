@@ -12,7 +12,7 @@ use Artesaos\SEOTools\Traits\SEOTools as SEOToolsTrait;
 
 class UserController extends Controller
 {
-    /**
+    /** 
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -25,9 +25,11 @@ class UserController extends Controller
 
          $users = User::orderBy('created_at', 'desc')->paginate(2);
 
+         $usersNumber = User::count();
+
          $this->seo()->metatags()->addMeta('robots', 'noindex, nofollow');
 
-         return view('userListView', ['users'=>$users]);
+         return view('userListView', ['users'=>$users, 'usersNumber'=>$usersNumber]);
     }
 
     /**

@@ -120,5 +120,5 @@
   <button class="btn btn-primary" id="submitStripe">Faire un don</button>
 </form>
 
-
+<script type="text/javascript" src="{{ URL::asset('js/sDishelp.js') }}"></script>
 @endsection

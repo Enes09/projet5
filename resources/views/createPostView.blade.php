@@ -20,22 +20,26 @@
 
 @section('content')
 
-{{ Form::open(['route' => 'post.store' , 'class' => 'form-horizontal textarea offset-lg-2 col-lg-8 offset-lg-2']) }}
+{{ Form::open(['route' => 'post.store' , 'class' => 'form-horizontal createPostForm textarea offset-lg-2 col-lg-8 offset-lg-2']) }}
 
-	<div class="form-group">
-		{{ Form::label('title :', null, ['class' => 'formTitle']) }}
-		{{ Form::text('title', null, ['class' => 'form-control']) }}
+<div style="text-align: right; height: 40px;">* Champs obligatoires</div>
+
+	<div class="form-group row">
+		{{ Form::label('* Title :', null, ['class' => 'formTitle col-md-1 form-label']) }}
+		<div class="col-md-11">
+		{{ Form::text('title', null, ['class' => 'form-control', 'autofocus']) }}
+		</div>
 		{!! $errors->first('title', '<div class="alert alert-warning"> :message </div>') !!}
 	</div>
 
 	<div class="form-group">
-		{{ Form::label('content :', null, ['class' => 'formTitle'])  }}
+		{{ Form::label('* Contenu :', null, ['class' => 'formTitle createPostContenTitle col-md-3'])  }}
 		{{ Form::textarea('content', null, ['class' => 'form-control']) }}
 		{!! $errors->first('content', '<div class="alert alert-warning"> :message </div>') !!}
 	</div>
 
 	<div class="submit">
-		{{ Form::submit('Poster',['class' => 'btn bouton']) }}
+		{{ Form::submit('Poster',['class' => 'btn btn-secondary']) }}
 	</div>
 
 {{ Form::close() }}

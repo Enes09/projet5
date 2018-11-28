@@ -90,8 +90,8 @@ form#deleteForm>input{
 
 .formTitle{
 	font-weight: bold;
-	margin-top: 10px;
 }
+
 
 .alert{
 	margin-top: 5px;
@@ -307,16 +307,7 @@ td.tableTitle{
 	color:white;
 }
 
-form.contactUserForm>div>input{
-	border-radius: 5px;
-	border:#ededed 1px solid;
-	box-shadow: 2px 2px 2px #ededed;
-	margin-top:10px;
-}
 
-form.contactUserForm{
-	position: relative;
-}
 
 .submitContactForm{
 	position: absolute;
@@ -331,12 +322,6 @@ form.contactUserForm>div>textarea{
 
 }
 
-.reciever{
-	color: #ffcf77 !important;
-	margin-top: 20px !important;
-	margin-bottom: 20px !important;
-	margin-left: 10px;
-}
 
 footer{
 	height: 200px;
@@ -374,29 +359,24 @@ header{
 
 
 form.contactSiteForm{
-	margin-top: 20px;
-	margin-bottom: 20px;
-	position: relative;
+	
+	padding: 10px;
 }
 
-form.contactSiteForm>div>input, form.contactSiteForm>div>textarea{
 
-	margin-top: 15px;
-	margin-bottom: 15px;
-	border-radius: 10px;
-	box-shadow: 5px 5px 5px #ededed;
-	border: solid 1px #ededed;
-
+.emailForm, .loginForm, .resetForm, .registerForm, .contactUserForm, .createPostForm, .updatePostForm{
+	padding: 10px;
 }
+
+
 
 form.contactSiteForm>div>textarea{
 	margin-bottom: 50px;
 }
 
 .contactSiteSubmit{
-	position: absolute;
-	bottom: 10px;
-	right: 10px;
+	text-align: right;
+	height: 50px;
 }
 
 /*  nous commençons ici le template et la page d'acceuil  */
@@ -761,6 +741,15 @@ figure{
 	font-size: 2em;
 	background: #0000004a;
 	width: 100%;
+}
+
+#totalUser{
+	line-height: 2;
+	padding: 5px;
+}
+
+#totalUserContainer{
+	text-align: right;
 }
 
 @media screen and (max-width:700px)
