@@ -1,4 +1,4 @@
-@extends('template')
+@extends('layouts.template')
 
 @section('title')
 Commentaire
@@ -44,7 +44,7 @@ Commentaire
 								{{ Form::open(['action'=>['PostController@destroy', $post->id],'id'=>'deleteForm' ,'method'=>'post']) }}
 
 									{{ method_field('DELETE') }}
-									{{ Form::submit('Supprimer', ['class'=>'delete btn button', 'onclick'=>'return confirm("êtes vous sûr de vouloir supprimer le billet intitulé '. $post->title .'? ")']) }}
+									{{ Form::submit('Supprimer', ['class'=>'delete btn button', 'onclick'=>'return confirm("êtes vous sûr de vouloir supprimer le billet intitulé '. $post->title .' et tous ses commentaires ? ")']) }}
 									
 								{{ Form::close() }}
 
@@ -63,7 +63,12 @@ Commentaire
 		
 		{{ Form::hidden('post_id', $post->id) }}
 
+@if(Auth::check())
+
 		{{ Form::submit('Publier', ['class'=>'btn btn-secondary col-lg-12']) }}
+@else
+		<div class="btn btn-secondary col-lg-12">Connectez vous pour publier</div>
+@endif
 		
 
 	{{ Form::close() }}

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\User;
+use App\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Requests\PostRequest;
@@ -146,8 +147,10 @@ class PostController extends Controller
 
         $post->delete();
 
+        Comment::where('post_id', $id)->delete();
+
         $this->seo()->metatags()->addMeta('robots', 'noindex, nofollow');
 
-        return Redirect::back();
+        return redirect('post');
     }
 }

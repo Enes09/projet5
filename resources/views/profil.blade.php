@@ -1,4 +1,4 @@
-@extends('template')
+@extends('layouts.template')
 
 @section('content')
 
@@ -29,7 +29,9 @@
 @can('demote', $user)
 
 	@if($user->admin===1)
+		@if(!$user->super_admin === 1)
 		<a class="btn button demote" href=" {{ route('user.demote', $user->id) }} ">Destituer</a>
+		@endif
 	@endif
 
 @endcan

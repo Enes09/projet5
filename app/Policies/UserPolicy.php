@@ -41,7 +41,7 @@ class UserPolicy
      * @return mixed
      */
 
-    public function update(User $user, User $user)
+    public function update(User $user)
     {
         return $user->id === Auth::user()->id;
     }
